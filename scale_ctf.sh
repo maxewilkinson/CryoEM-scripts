@@ -53,7 +53,7 @@ else
     echo "Acceleration voltage not 200 or 300 keV, please modify script to allow use of correct electron wavelength"
     exit 1
 fi
-echo "Accelration voltage read as" $kv", will use electron wavelength of" $lambda "A"
+echo "Acceleration voltage read as" $kv", will use electron wavelength of" $lambda "A"
 
 
 #Fudge factor: average-ish spatial resolution (A) for applying constant correction. This value is a bit arbitrary, something like 5-7A works ok. The correction involved is only about 20A, i.e. about 0.1 percent of the defocus
