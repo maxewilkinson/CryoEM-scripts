@@ -63,10 +63,12 @@ varC=$(gawk "BEGIN {printf \"%.6f\",-0.5*${cs}*${lambda}**2}")
 alpha=$(gawk "BEGIN {printf \"%.6f\",${apix1}/${apix2}}")
 alpha2=$(gawk "BEGIN {printf \"%.6f\",${alpha}**2}")
 
+invalpha2=$(gawk "BEGIN {printf \"%.6f\",1/${alpha2}}")
+
 const=$(gawk "BEGIN {printf \"%.6f\",${varC}*${alpha}**2 - ${varC}/${alpha}**2}")
 correction=$(gawk "BEGIN {printf \"%.6f\",${const}/${avgS}**2}")
 
-echo "Defocus rescaled  by" $alpha2 "plus a constant correction of" $correction 
+echo "Defocus scaled  by" $invalpha2 "plus a constant correction of" $correction 
 
 
 gawk "BEGIN{OFS = \"\t\"} NF>3 {
