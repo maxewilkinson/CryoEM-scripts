@@ -38,19 +38,21 @@ output_file=$(echo $1 | sed 's/.star/_newapix.star/')
 
 
 
-cs=$(head -200 $1 | gawk "NF > 3 {print \$$rlnSphericalAberrationIndex}" | sort | uniq | gawk '{printf "%.f",10000000 * $1}')
+cs=$(head -200 $1 | gawk "/mrc/ {print \$$rlnSphericalAberrationIndex}" | sort | uniq | gawk '{printf "%.f",10000000 * $1}')
 #echo $cs
 #cs=27000000
 echo "Read spherical aberration as" $cs "A from star-file header"
 
-kv=$(head -200 $1 | gawk "NF > 3 {print \$$rlnVoltageIndex}" | sort | uniq | xargs printf %.f)
+kv=$(head -200 $1 | gawk "/mrc/ {print \$$rlnVoltageIndex}" | sort | uniq | xargs printf %.f)
 #kv=300
-if [ $kv != "300" ]; then
-    echo "Acceration voltage not 300 keV, please modify for correct wavelength!"
+if [ $kv == "300" ]; then
+    lambda=0.0197
+elif [ $kv == "200" ]; then
+    lambda=0.0251
+else
+    echo "Acceleration voltage not 200 or 300 keV, please modify script to allow use of correct electron wavelength"
     exit 1
 fi
-
-lambda=0.0197
 echo "Accelration voltage read as" $kv", will use electron wavelength of" $lambda "A"
 
 
