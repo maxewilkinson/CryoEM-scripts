@@ -7,14 +7,9 @@
 import numpy as np
 
 ################
-# Take inputs
-#startbox=408
-#finishbox=408
-boxrange=300    # edit this to search a bigger range of box sizes
-#startApix=1.025
-#endApix=1.055
 
 startbox = input("What is the smallest box size allowed? ")
+finishbox = input("What is the largest box size allowed? ")
 startApix = input("What is your starting pixel size? ")
 endApix = input("What is the desired final pixel size? ")
 ntimes = input("and how many answers do you want? ")
@@ -25,7 +20,7 @@ ntimes = input("and how many answers do you want? ")
 apixRatio=startApix/endApix
 
 # produce range of possible box sizes and compute a division matrix between them all
-boxArray = np.arange(startbox,startbox+boxrange,2,dtype=float)
+boxArray = np.arange(startbox,finishbox,2,dtype=float)
 ratioArray = np.divide.outer(boxArray,boxArray)
 i = 1
 while i <= ntimes:
@@ -38,9 +33,8 @@ while i <= ntimes:
     endscale=boxArray[indxMin2D[0]]
 
     # print output
-    print 'Start with box size', startscale, 'scale to box size', endscale
-    print 'This will give a scaling factor of', endscale/startscale, 'compared to desired apix ratio of', apixRatio, 'giving a', (endscale/startscale-apixRatio)/apixRatio*100, 'percent error'
-    print ''
+    print('Starting with a {:.0f} pixel box, scale to a {:.0f} pixel box'.format(startscale, endscale))
+    print('This will give a scaling factor of {:.5f}, compared to a desired pixel size ratio of {:.5f}, giving a {:.3f} percent error.\n'.format(endscale/startscale, apixRatio, (endscale/startscale-apixRatio)/apixRatio*100))
     # remove this answer from ratioarray by setting it to a very large number
     ratioArray.flat[idxMin] = 999.
     i += 1
