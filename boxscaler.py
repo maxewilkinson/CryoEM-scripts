@@ -14,7 +14,9 @@ startApix = input("What is your starting pixel size? ")
 endApix = input("What is the desired final pixel size? ")
 ntimes = input("and how many answers do you want? ")
 
-
+# if provided box size is odd
+if startbox % 2 != 0:
+    startbox += 1
 
 # get desired ratio
 apixRatio=startApix/endApix
