@@ -2,11 +2,11 @@
 
 #########################################################################################
 #
-# Description: Script to (approximately) correct defocus values for different angpix
+# Description: Script to (approximately*) correct defocus values for different angpix
 # Max Wilkinson, MRC LMB
 #
 ########################################################################################
-# Approximately = +/- 20A or so ###
+# *Approximately = +/- 40A or so ###
 ###################################
 
 proc_name=$(echo $0 | gawk '{n=split($1,scr,"/");print scr[n];}')
