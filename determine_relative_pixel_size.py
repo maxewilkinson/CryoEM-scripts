@@ -130,15 +130,17 @@ def get_fsc_dropoff_point_in_star (fsc_star, fsc_aim):
 	for fsc in fsc_list:
 		if fsc_above_threshold and (float(fsc) > fsc_aim):
 			i_threshold = i
-		elif (fsc_above_threshold):
+		elif (fsc_above_threshold) and (float(fsc) > -0.5):
 			return interpolate(float(res_list[i_threshold]),float(res_list[i]),float(fsc_list[i_threshold]),float(fsc_list[i]),fsc_aim)
 			fsc_above_threshold = False
 		i = i + 1
 	return float(res_list[-1])
 
 def interpolate (x1, x2, y1, y2, y_goal):
-	return x1+((x2-x1)*(y1-y_goal)/(y1-y2))
-
+	try:
+		return x1+((x2-x1)*(y1-y_goal)/(y1-y2))
+	except ZeroDivisionError:
+		return 999
 
 print("determine_relative_pixel_size.py GPL 2019")
 
