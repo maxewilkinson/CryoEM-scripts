@@ -13,6 +13,8 @@ A couple of scripts are written by me, apologies for the poor python/bash stylin
 
 `scale_ctf.sh` will do a pretty good* approximate job of rescaling your defocus values to a different pixel size. This bypasses having to re-run CTFFIND or Gctf, which is useful e.g. if micrographs are no longer on disk.
 
+`star_apply_matrix.py` will apply a Chimera transformation matrix to the Euler angles and offsets of particles belonging to a specified class in a STAR file. This can be used to align particles based on the orientation of domains in their 3D classes.
+
 And a couple of much more nicely written scripts by Thomas Martin, Ana Casanal, and Takanori Nakane:
 
 `determine_relative_pixel_size.py` will find the pixel size that maximises the correlation (measured with FSC) of one map to a reference map - useful for finding relative pixel sizes when merging data sets.
