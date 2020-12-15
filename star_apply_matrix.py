@@ -191,7 +191,7 @@ def star_apply_matrix(starpath,matrix,classToMove,outstarpath,boxsize,angpix):
 
 
 def main():
-	usage = """Example: python star_apply_matrix.py --i Class3D/job049/run_it025_data.star --matrix chimeramatrix.txt --class 1 --boxsize 300 --angpix 1.12 --o class1shifted.star
+	usage = """Example: python star_apply_matrix.py --i Class3D/job049/run_it025_data.star --matrix chimeramatrix.txt --classN 1 --boxsize 300 --angpix 1.12 --o class1shifted.star
 	
 	Applies a rotation/translation transformation matrix to the Euler angles and offsets of particles of a particular class in a STAR file. 
     Can be used to align particles based on class orientations.
